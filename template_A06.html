@@ -3174,13 +3174,14 @@ Screenshot/image of RStudio
 <p>Add a new named element to the end of each player’s list called <code>height</code>. The heights in inches are as follows: MJ = 78; LJ = 81; KB = 78; KA = 86; SO = 85.</p>
 <p>Print the <code>player_info</code> list to prove you were successful.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>player_info<span class="sc">$</span>MJ<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="dv">78</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>player_info<span class="sc">$</span>LJ<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="dv">81</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>player_info<span class="sc">$</span>KB<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="dv">78</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>player_info<span class="sc">$</span>KA<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="dv">86</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>player_info<span class="sc">$</span>SO<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="dv">85</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>player_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#use $ to index</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>player_info<span class="sc">$</span>MJ<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="dv">78</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>player_info<span class="sc">$</span>LJ<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="dv">81</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>player_info<span class="sc">$</span>KB<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="dv">78</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>player_info<span class="sc">$</span>KA<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="dv">86</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>player_info<span class="sc">$</span>SO<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="dv">85</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>player_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$MJ
 $MJ$name
@@ -3294,15 +3295,18 @@ $SO$height
 <p>Hint: initialize an empty list</p>
 <p>Note: this must still run correctly even if the values were to change or if another player were added to the list or if the player order changed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>points_per_game <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (player <span class="cf">in</span> <span class="fu">names</span>(player_info)) {</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  points <span class="ot">&lt;-</span> player_info[[player]][[<span class="st">&quot;points&quot;</span>]]</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  games_played <span class="ot">&lt;-</span> player_info[[player]][[<span class="st">&quot;games_played&quot;</span>]]</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  points_per_game[[player]] <span class="ot">&lt;-</span> points <span class="sc">/</span> games_played</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>points_per_game[<span class="st">&quot;MJ&quot;</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#set initial list</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>points_per_game <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#iterate through players, use their games and points to find new stat</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#add to list while also naming new elements by their name</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (player <span class="cf">in</span> <span class="fu">names</span>(player_info)) {</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  points <span class="ot">&lt;-</span> player_info[[player]][[<span class="st">&quot;points&quot;</span>]]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  games_played <span class="ot">&lt;-</span> player_info[[player]][[<span class="st">&quot;games_played&quot;</span>]]</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  points_per_game[[player]] <span class="ot">&lt;-</span> points <span class="sc">/</span> games_played</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>points_per_game[<span class="st">&quot;MJ&quot;</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$MJ
 [1] 33.44693</code></pre>
@@ -3314,9 +3318,10 @@ $SO$height
 <p>Use the list created in Part c and an appropriate apply function to round each value to two decimal places.</p>
 <p>Store the output as a vector and print the results.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>points_per_game <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(points_per_game, round, <span class="dv">2</span>))</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>points_per_game</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#round and unlist the previous list</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>points_per_game <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(points_per_game, round, <span class="dv">2</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>points_per_game</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   MJ    LJ    KB    KA    SO 
 33.45 28.44 25.64 24.31 24.31 </code></pre>

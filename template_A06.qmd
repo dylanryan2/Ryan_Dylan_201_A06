@@ -114,6 +114,7 @@ Add a new named element to the end of each player's list called `height`. The he
 Print the `player_info` list to prove you were successful.
 
 ```{r}
+#use $ to index
 player_info$MJ$height <- 78
 player_info$LJ$height <- 81
 player_info$KB$height <- 78
@@ -139,8 +140,11 @@ Hint: initialize an empty list
 Note: this must still run correctly even if the values were to change or if another player were added to the list or if the player order changed.
 
 ```{r}
+#set initial list
 points_per_game <- list()
 
+#iterate through players, use their games and points to find new stat
+#add to list while also naming new elements by their name
 for (player in names(player_info)) {
   points <- player_info[[player]][["points"]]
   games_played <- player_info[[player]][["games_played"]]
@@ -158,6 +162,7 @@ Use the list created in Part c and an appropriate apply function to round each v
 Store the output as a vector and print the results.
 
 ```{r}
+#round and unlist the previous list
 points_per_game <- unlist(lapply(points_per_game, round, 2))
 
 points_per_game
