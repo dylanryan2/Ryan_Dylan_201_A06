@@ -253,7 +253,6 @@ No need to print any output here.
 co_temps <- filter(max_temps, state == 'CO')
 oh_temps <- filter(max_temps, state == 'OH')
 va_temps <- filter(max_temps, state == 'VA')
-
 ```
 
 
